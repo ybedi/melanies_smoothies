@@ -40,8 +40,10 @@ if ingredient_list:
     ingredients_str = ''
     for item in ingredient_list:
         ingredients_str += item + ' '
-        
-    #st.write(ingredients_str)
+
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
+        #st.write(ingredients_str)
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
         st.subheader(item + ' Nutrient Information')
         st_df=st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
